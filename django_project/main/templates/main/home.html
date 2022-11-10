@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<!--The label above should be written for all html documents-->
 <!--This next line takes the code written in the specified HTML file and load that script but with some uniquely acquired variables-->
 {% extends 'main/base.html' %}
+
+{% block content %}
+    <p>This is the home page's customized text</p>
+    <!--The name field is dynamic but necessitates a pre-programmed input like "home" or an integer input-->
+{% endblock %}
 <!--Nothing else here yet, so the base.html file is mostly identical-->

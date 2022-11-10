@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+{% extends "main\base.html" %}
+
+{% block content %}
+<h4>Let's try out their model</h4>
+
+<p>
+    {{ my_text }}, {{ my_number }}
+    {{ my_list }}
+</p>
+
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+</ul>
+
+<ul>
+    {% for abc in my_list %}
+        {% if abc == 312 %}
+            <li>{{ forloop.counter }} - {{abc|add:22}}</li>
+        {% elif abc == "Abcd" %}
+            <li>code can be pretty interesting</li>
+        {% else %}
+        <li>{{ forloop.counter }} - {{ abc }}</li>
+        {% endif %}
+    {% endfor %}
+    {% endblock content %}    
+</ul>
+
