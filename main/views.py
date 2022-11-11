@@ -14,7 +14,7 @@ def home(response):
 
 def about(response, *args, **kwargs):
     my_context = {
-        "name":"the about page",
+        "name":"about",
         "my_text": "This is my_text",
         "my_number": 1234,
         "my_list": [1313, 4231, 312, "Abcd"],
@@ -24,23 +24,32 @@ def about(response, *args, **kwargs):
 def product_detail(response):
     obj = Product.objects.get(id=1)
     # content = {
-        # "name":"the product page",
+        # "name":"the product creation page",
         # "my_text": "This is my_text",
         # "my_number": 1234,
         # "my_list": [1313, 4231, 312, "Abcd"],
     # }
     prod_context = {
-        'object': obj
+        'object': obj,
+        "name": "product display",
     }
     return render(response, "main/product_detail.html", prod_context)
 
 def product_new(response):
-    form = ProductForm(response.POST or None)
-    if form.is_valid():
-        form.save()
+    if response.method == "POST":
+        form = ProductForm(response.POST or None)
+        if form.is_valid():
+            form.save()
+            # n = form.cleaned_data["title"]
+            # t = ProductForm(title=n)
+            # t.save()
+            
+    else:
+        form = ProductForm()
 
     context = {
-        'form': form
+        'form': form,
+        "name": "product creation",
     }
     return render(response, "main/product_new.html", context)
 
