@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import ToDoList, Item, Product
 from .forms import ProductForm
 
-# Create your views here.
+# Created views are below here.
 
 def index(response, id):
     ls = ToDoList.objects.get(id=id)
@@ -21,8 +21,22 @@ def about(response, *args, **kwargs):
     }
     return render(response, "main/about.html", my_context)
 
-def product_detail(response):
-    obj = Product.objects.get(id=1)
+def product_index(response, id):
+    obj = Product.objects.get(id=id)
+    # content = {
+        # "name":"the product creation page",
+        # "my_text": "This is my_text",
+        # "my_number": 1234,
+        # "my_list": [1313, 4231, 312, "Abcd"],
+    # }
+    prod_context = {
+        'object': obj,
+        "name": "product display",
+    }
+    return render(response, "main/product_detail.html", prod_context)
+
+def product_detail(response, id):
+    obj = Product.objects.get(id=id)
     # content = {
         # "name":"the product creation page",
         # "my_text": "This is my_text",

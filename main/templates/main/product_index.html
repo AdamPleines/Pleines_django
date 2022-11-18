@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+{% extends "main\base.html" %}
+
+{% block content %}
+<h4>In App template: {{ object.title }}</h4>
+
+<ul>
+    {% for product in Product %}<li>{{ object.title }}</li>
+</ul>
+
+{{ object.price }}
+{% endblock %}
